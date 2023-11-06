@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RSOI_LAB_01\RSOI_Lab_01\RSOI_Lab_01.csproj" />
+    <ProjectReference Include="..\RSOI_Lab_01\RSOI_Lab_01\RSOI_Lab_01.csproj" />
   </ItemGroup>
 
 </Project>
