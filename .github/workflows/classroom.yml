@@ -21,7 +21,7 @@ jobs:
       - name: Build
         run: dotnet build source/RSOI_Lab_01/RSOI_Lab_01 --no-restore
       - name: Unit testing
-        run: dotnet test source/UnitTests --verbosity normal
+        run: dotnet test source/UnitTests
     #name: Autograding
     #runs-on: ubuntu-latest
     #steps:
