@@ -22,6 +22,14 @@ jobs:
         run: dotnet build source/RSOI_Lab_01/RSOI_Lab_01 --no-restore
       - name: Unit testing
         run: dotnet test source/UnitTests
+  deploy:
+      name: Deploy on render
+      runs-on: ubuntu-latest
+      needs: [build]
+      steps:
+        - name: Call hook
+          run:
+            curl "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
     #name: Autograding
     #runs-on: ubuntu-latest
     #steps:
