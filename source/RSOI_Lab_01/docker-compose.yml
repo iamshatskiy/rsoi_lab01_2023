@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  rsoi_lab_01:
+    image: ${DOCKER_REGISTRY-}rsoilab01
+    build:
+      context: .
+      dockerfile: RSOI_Lab_01/Dockerfile
+    networks:
+      - database
+    ports:
+      - "5001:5001"
+      - "5000:5000"
+  postgres:
+    image: library/postgres:13
+    container_name: postgres
+    restart: on-failure
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./postgres/:/docker-entrypoint-initdb.d/
+    ports:
+      - "5432:5432"
+    networks:
+      - database
+
+volumes:
+  db-data:
+
+networks:
+  database:
+    driver: bridge
